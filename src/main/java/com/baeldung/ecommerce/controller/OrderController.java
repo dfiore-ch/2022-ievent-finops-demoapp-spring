@@ -36,12 +36,14 @@ public class OrderController {
     }
 
     @GetMapping
+    @CrossOrigin(origins = "*")
     @ResponseStatus(HttpStatus.OK)
     public @NotNull Iterable<Order> list() {
         return this.orderService.getAllOrders();
     }
 
     @PostMapping
+    @CrossOrigin(origins = "*")
     public ResponseEntity<Order> create(@RequestBody OrderForm form) {
         List<OrderProductDto> formDtos = form.getProductOrders();
         validateProductsExistence(formDtos);
